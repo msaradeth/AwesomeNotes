@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lcl-5e-2V3">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="fNz-vz-5Kk">
+            <objects>
+                <viewController id="foM-Wr-wec" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RHq-Z7-GPH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="bcU-X9-7hx"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GhN-Tl-jLV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="299" y="-547"/>
+        </scene>
+        <!--Notes-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="NoteListViewController" title="Notes" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="NoteListViewController" customModule="AwesomeNotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iLW-LD-Zhb">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="iLW-LD-Zhb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="088-fX-GUt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iLW-LD-Zhb" secondAttribute="trailing" id="2F6-mf-yTe"/>
+                            <constraint firstItem="iLW-LD-Zhb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="CbN-lm-tHt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="iLW-LD-Zhb" secondAttribute="bottom" id="OhH-Jc-Asb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="SgJ-Ak-FVS"/>
+                        <barButtonItem title="New Folder" id="UKz-mg-V6o">
+                            <connections>
+                                <action selector="newFolderButtonTapped:" destination="BYZ-38-t0r" id="I3h-dw-Ul8"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Folders" largeTitleDisplayMode="always" id="XOO-uz-pBO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="cancelButton" destination="Qes-II-hHu" id="gcU-aL-CKn"/>
+                        <outlet property="editButton" destination="pC7-D0-Wgt" id="c9G-00-EoO"/>
+                        <segue destination="gmA-CM-KAf" kind="show" identifier="showFoldList" id="89U-Zz-eUZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <barButtonItem systemItem="edit" id="pC7-D0-Wgt">
+                    <connections>
+                        <action selector="editButtonTapped:" destination="BYZ-38-t0r" id="EOj-CB-kM7"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem systemItem="cancel" id="Qes-II-hHu">
+                    <connections>
+                        <action selector="cancelButtonTapped:" destination="BYZ-38-t0r" id="0oP-Vd-If8"/>
+                    </connections>
+                </barButtonItem>
+            </objects>
+            <point key="canvasLocation" x="1033" y="-547"/>
+        </scene>
+        <!--Folder List-->
+        <scene sceneID="dhi-3h-Hyp">
+            <objects>
+                <viewController storyboardIdentifier="FolderListViewController" title="Folder List" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gmA-CM-KAf" customClass="FolderListViewController" customModule="AwesomeNotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems>
+                        <barButtonItem systemItem="camera" id="XEY-Ir-dZf"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="c1Q-k3-nMW"/>
+                        <barButtonItem title="3 notes" id="goW-AL-v3U"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="zze-q6-JXC"/>
+                        <barButtonItem systemItem="compose" id="93g-wZ-K9u">
+                            <connections>
+                                <action selector="composeButtonTapped:" destination="gmA-CM-KAf" id="0Md-wk-Zhm"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="cancelButton" destination="H2R-Ry-GGj" id="dxp-Xl-4Xw"/>
+                        <outlet property="editButton" destination="WXd-vE-k6y" id="rSO-z9-Hmf"/>
+                        <outlet property="numberOfNotes" destination="goW-AL-v3U" id="KNO-dG-Vso"/>
+                        <outlet property="searchDisplayController" destination="h0d-MM-42o" id="ObH-YL-opG"/>
+                        <segue destination="uA3-Rk-WUI" kind="show" identifier="showNote" id="1aN-ZB-DhW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D6x-Ax-P0e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="h0d-MM-42o">
+                    <connections>
+                        <outlet property="delegate" destination="gmA-CM-KAf" id="PhV-3p-Gql"/>
+                        <outlet property="searchContentsController" destination="gmA-CM-KAf" id="1vl-EV-fAW"/>
+                        <outlet property="searchResultsDataSource" destination="gmA-CM-KAf" id="8MD-a6-39f"/>
+                        <outlet property="searchResultsDelegate" destination="gmA-CM-KAf" id="RIj-cG-ple"/>
+                    </connections>
+                </searchDisplayController>
+                <barButtonItem systemItem="edit" id="WXd-vE-k6y">
+                    <connections>
+                        <action selector="editButtonTapped:" destination="gmA-CM-KAf" id="vTy-qV-RSR"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem systemItem="cancel" id="H2R-Ry-GGj">
+                    <connections>
+                        <action selector="cancelButtonTapped:" destination="gmA-CM-KAf" id="5eO-Sk-wee"/>
+                    </connections>
+                </barButtonItem>
+            </objects>
+            <point key="canvasLocation" x="1870" y="-547"/>
+        </scene>
+        <!--Notes-->
+        <scene sceneID="Uyv-01-tQM">
+            <objects>
+                <viewController title="Notes" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uA3-Rk-WUI" customClass="NoteDetailViewController" customModule="AwesomeNotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0wj-aq-J8P">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9bO-Pb-SXu">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VU9-77-wJ4" firstAttribute="trailing" secondItem="9bO-Pb-SXu" secondAttribute="trailing" id="3Ru-WO-aWk"/>
+                            <constraint firstItem="9bO-Pb-SXu" firstAttribute="top" secondItem="VU9-77-wJ4" secondAttribute="top" id="JYH-V5-fs1"/>
+                            <constraint firstItem="VU9-77-wJ4" firstAttribute="bottom" secondItem="9bO-Pb-SXu" secondAttribute="bottom" id="RE6-81-sFr"/>
+                            <constraint firstItem="9bO-Pb-SXu" firstAttribute="leading" secondItem="VU9-77-wJ4" secondAttribute="leading" id="s6S-XQ-ue2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VU9-77-wJ4"/>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem systemItem="trash" id="ky9-7C-p3F">
+                            <connections>
+                                <action selector="trashButtonTapped:" destination="uA3-Rk-WUI" id="bvn-7m-C9D"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="yyY-gm-J17"/>
+                        <barButtonItem systemItem="compose" id="96r-FT-dSA">
+                            <connections>
+                                <action selector="composeButtonTapped:" destination="uA3-Rk-WUI" id="4sl-qC-NLf"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="shareButton" destination="V27-MA-yEb" id="kYS-24-Ory"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IhB-9q-7Nn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem systemItem="action" id="V27-MA-yEb">
+                    <connections>
+                        <action selector="shareButtonTapped:" destination="uA3-Rk-WUI" id="T8t-hB-uGo"/>
+                    </connections>
+                </barButtonItem>
+            </objects>
+            <point key="canvasLocation" x="2730" y="-547"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3cq-xj-dt2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="lcl-5e-2V3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PhF-Vy-HsF">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2Yy-20-q5n">
+                        <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="foM-Wr-wec" kind="show" id="s7P-3J-JUq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K2k-6E-9S9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-486" y="-547"/>
+        </scene>
+    </scenes>
+</document>
