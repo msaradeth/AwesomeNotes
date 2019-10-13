@@ -5,20 +5,19 @@
 //  Created by Mike Saradeth on 10/11/19.
 //  Copyright © 2019 Mike Saradeth. All rights reserved.
 //
-
 import UIKit
 
 class NoteDetailViewController: UIViewController {
-
     @IBOutlet var shareButton: UIBarButtonItem!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var noteTextField: UITextField!
+    @IBOutlet weak var textView: UITextView!
     
+    var viewModel: NoteDetailViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = shareButton
         navigationController?.navigationBar.prefersLargeTitles = false
+        textView.text = viewModel.note.text
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -30,10 +29,11 @@ class NoteDetailViewController: UIViewController {
     }
     
     @IBAction func composeButtonTapped(_ sender: Any) {
-        
+        //save and new edit
     }
+    
     @IBAction func trashButtonTapped(_ sender: Any) {
-        
+        textView.text = ""
     }
     /*
     // MARK: - Navigation

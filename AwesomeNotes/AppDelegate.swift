@@ -8,14 +8,15 @@
 
 import UIKit
 import Firebase
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
     var user: User!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        IQKeyboardManager.shared.enable = true
         FirebaseApp.configure()
 
         user = User()
@@ -34,36 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    
-    func testFireStore() {
-        // Add a new document with a generated ID
-//        let db = Firestore.firestore()
-//        
-//        var ref: DocumentReference? = nil
-//        ref = db.collection("users").addDocument(data: [
-//            "email": "msaradeth@yahoo.com",
-//            "password": "1111",
-//            "avatar": "avatar"
-//        ]) { err in
-//            if let err = err {
-//                print("Error adding document: \(err)")
-//            } else {
-//                print("Document added with ID: \(ref!.documentID)")
-//            }
-//        }
-        
-//        ref = db.collection(Collection.users).addDocument(data: [
-//            "email" : "john@google.com",
-//            "password" : "222"
-//            ], completion: { (error) in
-//                if let error = error {
-//                    print("Error adding document: \(error)")
-//                } else {
-//                    print("Document added with ID: \(ref!.documentID)")
-//                }
-//        })
-        
-    }
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

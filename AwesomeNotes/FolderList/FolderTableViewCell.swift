@@ -5,7 +5,6 @@
 //  Created by Mike Saradeth on 10/12/19.
 //  Copyright © 2019 Mike Saradeth. All rights reserved.
 //
-
 import UIKit
 
 class FolderTableViewCell: UITableViewCell {
@@ -15,6 +14,6 @@ class FolderTableViewCell: UITableViewCell {
     
     func configure(_ folder: Folder) {
         self.folderNameLabel.text = folder.folderName
-        self.numberOfNotesLabel.text = String(folder.notes.count)
+        self.numberOfNotesLabel.text = String(folder.numberOfNotes)
     }
 }

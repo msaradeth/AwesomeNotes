@@ -5,10 +5,10 @@
 //  Created by Mike Saradeth on 10/11/19.
 //  Copyright © 2019 Mike Saradeth. All rights reserved.
 //
-
 import UIKit
 
 class FolderListViewController: UIViewController {
+    @IBOutlet var logoutButton: UIBarButtonItem!
     @IBOutlet var editButton: UIBarButtonItem!
     @IBOutlet var cancelButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
@@ -25,35 +25,39 @@ class FolderListViewController: UIViewController {
         return navController
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.leftBarButtonItem = logoutButton
         navigationItem.rightBarButtonItem = editButton
         tableView.dataSource = self
         tableView.delegate = self
         
         viewModel.addFolderChangeListioner { [weak self] in
-            self?.tableView.reloadData()
-            self?.editButton.isEnabled = (self?.viewModel.user.folders.count ?? 0) > 0 ? true : false
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.tableView.reloadData()
+                self.editButton.isEnabled = self.viewModel.folders.count > 0 ? true : false
+            }
         }
     }
     
-    //MARK: - Navigation
+    //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? NoteListViewController, let folder = sender as? Folder {
             vc.title = folder.folderName
-            vc.viewModel = NoteViewModelImpl(user: viewModel.user, folderName: folder.folderName, notes: folder.notes)
+            vc.viewModel = NoteViewModelImpl(user: viewModel.user, folder: folder)
         }
     }
-
     
     //MARK: Actions
     @IBAction func editButtonTapped(_ sender: Any) {
         navigationItem.rightBarButtonItem = cancelButton
+        tableView.setEditing(true, animated: true)
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         navigationItem.rightBarButtonItem = editButton
+        tableView.setEditing(false, animated: true)
     }
     
     @IBAction func newFolderButtonTapped(_ sender: UIBarButtonItem) {
@@ -62,19 +66,22 @@ class FolderListViewController: UIViewController {
         }
     }
 
+    @IBAction func logoutTapped(_ sender: Any) {
+        viewModel.user.isLogin = false
+        UIApplication.shared.keyWindow?.rootViewController = LoginViewController.createWith(viewModel.user)
+    }
 }
 
 
 //MARK: UITableViewDataSource
 extension FolderListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.user.folders.count
+        return viewModel.folders.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FolderTableViewCell.reuseIdentifier, for: indexPath) as! FolderTableViewCell
-        print("indexPath: ", indexPath.row, indexPath.item)
-        cell.configure(viewModel.user.folders[indexPath.row])
+        cell.configure(viewModel.folders[indexPath.row])
         return cell
     }
 }
@@ -82,6 +89,11 @@ extension FolderListViewController: UITableViewDataSource {
 //MARK: UITableViewDelegate
 extension FolderListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "showNotes", sender: viewModel.user.folders[indexPath.item])
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.performSegue(withIdentifier: "showNotes", sender: viewModel.folders[indexPath.item])
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        viewModel.deleteFolderDocument(folder: viewModel.folders[indexPath.item])
     }
 }

@@ -84,11 +84,17 @@
                     <connections>
                         <outlet property="cancelButton" destination="Qes-II-hHu" id="gcU-aL-CKn"/>
                         <outlet property="editButton" destination="pC7-D0-Wgt" id="c9G-00-EoO"/>
+                        <outlet property="logoutButton" destination="99d-T8-e4O" id="ohS-ME-p4U"/>
                         <outlet property="tableView" destination="iLW-LD-Zhb" id="k1E-DG-Ihb"/>
                         <segue destination="gmA-CM-KAf" kind="show" identifier="showNotes" id="89U-Zz-eUZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <barButtonItem title="Logout" id="99d-T8-e4O">
+                    <connections>
+                        <action selector="logoutTapped:" destination="BYZ-38-t0r" id="7YI-QD-Icm"/>
+                    </connections>
+                </barButtonItem>
                 <barButtonItem systemItem="edit" id="pC7-D0-Wgt">
                     <connections>
                         <action selector="editButtonTapped:" destination="BYZ-38-t0r" id="EOj-CB-kM7"/>
@@ -206,30 +212,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GeQ-KR-huR">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LSK-Y2-Gf6">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Jq-sC-8Nw">
-                                        <rect key="frame" x="0.0" y="0.0" width="8" height="17"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="4Jq-sC-8Nw" secondAttribute="trailing" id="ASU-M1-DEA"/>
-                                    <constraint firstItem="4Jq-sC-8Nw" firstAttribute="top" secondItem="GeQ-KR-huR" secondAttribute="top" id="OdP-ub-m56"/>
-                                    <constraint firstItem="4Jq-sC-8Nw" firstAttribute="leading" secondItem="GeQ-KR-huR" secondAttribute="leading" id="OxY-e5-EAq"/>
-                                    <constraint firstAttribute="bottom" secondItem="4Jq-sC-8Nw" secondAttribute="bottom" id="UJv-2m-lko"/>
-                                </constraints>
-                            </scrollView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="VU9-77-wJ4" firstAttribute="bottom" secondItem="GeQ-KR-huR" secondAttribute="bottom" id="Jnc-fs-mYK"/>
-                            <constraint firstItem="GeQ-KR-huR" firstAttribute="leading" secondItem="VU9-77-wJ4" secondAttribute="leading" id="MM3-3w-MEw"/>
-                            <constraint firstItem="GeQ-KR-huR" firstAttribute="top" secondItem="VU9-77-wJ4" secondAttribute="top" id="ZYm-x7-B54"/>
-                            <constraint firstItem="VU9-77-wJ4" firstAttribute="trailing" secondItem="GeQ-KR-huR" secondAttribute="trailing" id="eUn-hG-9lb"/>
+                            <constraint firstItem="VU9-77-wJ4" firstAttribute="bottom" secondItem="LSK-Y2-Gf6" secondAttribute="bottom" id="Q3r-3x-scb"/>
+                            <constraint firstItem="VU9-77-wJ4" firstAttribute="trailing" secondItem="LSK-Y2-Gf6" secondAttribute="trailing" id="dcx-EL-8F1"/>
+                            <constraint firstItem="LSK-Y2-Gf6" firstAttribute="leading" secondItem="VU9-77-wJ4" secondAttribute="leading" id="dpP-tR-wxB"/>
+                            <constraint firstItem="LSK-Y2-Gf6" firstAttribute="top" secondItem="VU9-77-wJ4" secondAttribute="top" id="lam-2K-0JE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VU9-77-wJ4"/>
                     </view>
@@ -248,9 +243,8 @@
                     </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="noteTextField" destination="4Jq-sC-8Nw" id="dbC-Lf-f30"/>
-                        <outlet property="scrollView" destination="GeQ-KR-huR" id="pb1-Vx-uAd"/>
                         <outlet property="shareButton" destination="V27-MA-yEb" id="kYS-24-Ory"/>
+                        <outlet property="textView" destination="LSK-Y2-Gf6" id="1ah-39-kba"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IhB-9q-7Nn" userLabel="First Responder" sceneMemberID="firstResponder"/>

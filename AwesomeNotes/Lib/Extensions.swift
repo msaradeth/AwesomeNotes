@@ -5,7 +5,6 @@
 //  Created by Mike Saradeth on 10/12/19.
 //  Copyright © 2019 Mike Saradeth. All rights reserved.
 //
-
 import UIKit
 
 extension UIViewController {
@@ -21,7 +20,7 @@ extension UIViewController {
     }
     
     func newFolder(completion: @escaping (String)->Void) {
-        let alertController = UIAlertController(title: "New Folder", message: "Enter a new for this folder", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "New Folder", message: "Enter a name for this folder", preferredStyle: .alert)
         alertController.addTextField { (textField) in
             textField.placeholder = "Name"
         }
@@ -54,5 +53,15 @@ extension UITextField {
     static func isValidPassword(_ password: String?) -> Bool {
         guard let characterCount = password?.count else { return false }
         return characterCount > 5 ? true : false
+    }
+}
+
+
+extension Date {
+    static func getTimestamp() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let timeStamp: String = dateFormatter.string(from: Date())
+        return timeStamp
     }
 }

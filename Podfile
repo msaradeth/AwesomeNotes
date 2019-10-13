@@ -10,6 +10,7 @@ target 'AwesomeNotes' do
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
+  pod 'IQKeyboardManagerSwift', '~> 6.0.4'
 
   target 'AwesomeNotesTests' do
     inherit! :search_paths

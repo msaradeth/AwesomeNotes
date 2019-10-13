@@ -5,7 +5,6 @@
 //  Created by Mike Saradeth on 10/12/19.
 //  Copyright © 2019 Mike Saradeth. All rights reserved.
 //
-
 import Foundation
 import FirebaseAuth
 
@@ -42,7 +41,7 @@ class LoginOrRegisterViewModelImpl: NSObject {
     }
     
     
-    //Mark: login and sign up
+    //Mark: login and sign up helper methods
     private func login(email: String, password: String, completion: @escaping (Error?)->Void) {
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] (result, error) in
             if error == nil, let userID = result?.user.uid {

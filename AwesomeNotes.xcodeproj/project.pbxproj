@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E090E4123537D9500B7F63F /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E090E4023537D9500B7F63F /* Note.swift */; };
 		0E3C874123513BE4006EF565 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C874023513BE4006EF565 /* AppDelegate.swift */; };
 		0E3C874623513BE5006EF565 /* Notes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E3C874423513BE5006EF565 /* Notes.storyboard */; };
 		0E3C874823513BE6006EF565 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E3C874723513BE6006EF565 /* Assets.xcassets */; };
@@ -16,7 +17,6 @@
 		0E75469023518B1500837B00 /* LoginOrRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E75468F23518B1500837B00 /* LoginOrRegisterViewController.swift */; };
 		0EA6BEE023514046008B3CB6 /* NoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA6BEDF23514046008B3CB6 /* NoteListViewController.swift */; };
 		0EA6BEE223514065008B3CB6 /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA6BEE123514065008B3CB6 /* NoteDetailViewController.swift */; };
-		0EA6BEE423514087008B3CB6 /* NotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA6BEE323514087008B3CB6 /* NotesViewModel.swift */; };
 		0EA6BEE6235140A5008B3CB6 /* NoteDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA6BEE5235140A5008B3CB6 /* NoteDetailViewModel.swift */; };
 		0EA6BEEA2351478F008B3CB6 /* FolderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA6BEE92351478F008B3CB6 /* FolderListViewController.swift */; };
 		0EAC81942352FF8F006434B6 /* FolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAC81932352FF8F006434B6 /* FolderTableViewCell.swift */; };
@@ -53,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E090E4023537D9500B7F63F /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		0E3C873D23513BE4006EF565 /* AwesomeNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AwesomeNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E3C874023513BE4006EF565 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E3C874523513BE5006EF565 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Notes.storyboard; sourceTree = "<group>"; };
@@ -68,7 +69,6 @@
 		0E75468F23518B1500837B00 /* LoginOrRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOrRegisterViewController.swift; sourceTree = "<group>"; };
 		0EA6BEDF23514046008B3CB6 /* NoteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewController.swift; sourceTree = "<group>"; };
 		0EA6BEE123514065008B3CB6 /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
-		0EA6BEE323514087008B3CB6 /* NotesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewModel.swift; sourceTree = "<group>"; };
 		0EA6BEE5235140A5008B3CB6 /* NoteDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewModel.swift; sourceTree = "<group>"; };
 		0EA6BEE92351478F008B3CB6 /* FolderListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderListViewController.swift; sourceTree = "<group>"; };
 		0EAC81932352FF8F006434B6 /* FolderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderTableViewCell.swift; sourceTree = "<group>"; };
@@ -156,13 +156,13 @@
 		0E3C873F23513BE4006EF565 /* AwesomeNotes */ = {
 			isa = PBXGroup;
 			children = (
-				0EF080F9235234F1005A05E8 /* Lib */,
 				0E75468C23518A3500837B00 /* Storyboards */,
 				0EA6BEE7235140A9008B3CB6 /* Model */,
 				0E1A00D7235153E4004C0B21 /* Login */,
 				0EA6BEE823514734008B3CB6 /* FolderList */,
-				0EA6BEDD23514018008B3CB6 /* Notes */,
+				0EA6BEDD23514018008B3CB6 /* NotesList */,
 				0EA6BEDE23514021008B3CB6 /* NoteDetail */,
+				0EF080F9235234F1005A05E8 /* Lib */,
 				0E3C874023513BE4006EF565 /* AppDelegate.swift */,
 				0E3C874723513BE6006EF565 /* Assets.xcassets */,
 				0E3C874923513BE6006EF565 /* LaunchScreen.storyboard */,
@@ -199,15 +199,14 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		0EA6BEDD23514018008B3CB6 /* Notes */ = {
+		0EA6BEDD23514018008B3CB6 /* NotesList */ = {
 			isa = PBXGroup;
 			children = (
 				0EA6BEDF23514046008B3CB6 /* NoteListViewController.swift */,
-				0EE0B4DA2353135600E67F02 /* NoteTableViewCell.swift */,
 				0EAC819723530A5C006434B6 /* NoteViewModel.swift */,
-				0EA6BEE323514087008B3CB6 /* NotesViewModel.swift */,
+				0EE0B4DA2353135600E67F02 /* NoteTableViewCell.swift */,
 			);
-			path = Notes;
+			path = NotesList;
 			sourceTree = "<group>";
 		};
 		0EA6BEDE23514021008B3CB6 /* NoteDetail */ = {
@@ -222,8 +221,9 @@
 		0EA6BEE7235140A9008B3CB6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0EC696DA23527F23009A44FA /* User.swift */,
 				0EC696DC235283E0009A44FA /* Folder.swift */,
+				0E090E4023537D9500B7F63F /* Note.swift */,
+				0EC696DA23527F23009A44FA /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -232,8 +232,8 @@
 			isa = PBXGroup;
 			children = (
 				0EA6BEE92351478F008B3CB6 /* FolderListViewController.swift */,
-				0EAC81932352FF8F006434B6 /* FolderTableViewCell.swift */,
 				0EAC819523530A4D006434B6 /* FolderViewModel.swift */,
+				0EAC81932352FF8F006434B6 /* FolderTableViewCell.swift */,
 			);
 			path = FolderList;
 			sourceTree = "<group>";
@@ -480,6 +480,7 @@
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -493,6 +494,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
@@ -518,11 +520,11 @@
 				0EC696DF2352A3B3009A44FA /* LoginOrRegisterViewModel.swift in Sources */,
 				0EAC819823530A5C006434B6 /* NoteViewModel.swift in Sources */,
 				0EF080FB23523502005A05E8 /* Extensions.swift in Sources */,
-				0EA6BEE423514087008B3CB6 /* NotesViewModel.swift in Sources */,
 				0EAC81942352FF8F006434B6 /* FolderTableViewCell.swift in Sources */,
 				0EF080F8235230BC005A05E8 /* LoginViewController.swift in Sources */,
 				0EA6BEE023514046008B3CB6 /* NoteListViewController.swift in Sources */,
 				0EE0B4DB2353135600E67F02 /* NoteTableViewCell.swift in Sources */,
+				0E090E4123537D9500B7F63F /* Note.swift in Sources */,
 				0EA6BEE6235140A5008B3CB6 /* NoteDetailViewModel.swift in Sources */,
 				0EC696DB23527F23009A44FA /* User.swift in Sources */,
 				0EAC819623530A4D006434B6 /* FolderViewModel.swift in Sources */,

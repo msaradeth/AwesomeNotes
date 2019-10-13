@@ -5,7 +5,6 @@
 //  Created by Mike Saradeth on 10/11/19.
 //  Copyright © 2019 Mike Saradeth. All rights reserved.
 //
-
 import UIKit
 
 class NoteListViewController: UIViewController {
@@ -18,16 +17,21 @@ class NoteListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = editButton
-        editButton.isEnabled = viewModel.notes.count > 0 ? true : false
         tableView.dataSource = self
         tableView.delegate = self
+        viewModel.addNoteChangeListioner { [weak self] in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.tableView.reloadData()
+                self.editButton.isEnabled = self.viewModel.notes.count > 0 ? true : false
+            }
+        }
     }
     
-    // MARK: - Navigation
+    // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     }
  
-    
     //MARK: Action
     @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
         navigationItem.rightBarButtonItem = cancelButton
@@ -59,5 +63,6 @@ extension NoteListViewController: UITableViewDataSource {
 extension NoteListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath)
+        self.performSegue(withIdentifier: "showNoteDetail", sender: viewModel.notes[indexPath.item])
     }
 }

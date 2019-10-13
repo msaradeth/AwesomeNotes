@@ -17,38 +17,6 @@
             endingLineNumber = "17"
             landmarkName = "configure(note:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "AwesomeNotes.NoteTableViewCell.configure(note: Swift.String) -&gt; ()"
-                  moduleName = "AwesomeNotes"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mikesaradeth/workspace/AwesomeNotes/AwesomeNotes/Notes/NoteTableViewCell.swift"
-                  timestampString = "592651261.453915"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
-                  offsetFromSymbolStart = "55">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Character) -&gt; Swift.Bool in AwesomeNotes.NoteTableViewCell.configure(note: Swift.String) -&gt; ()"
-                  moduleName = "AwesomeNotes"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mikesaradeth/workspace/AwesomeNotes/AwesomeNotes/Notes/NoteTableViewCell.swift"
-                  timestampString = "592651261.456597"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
-                  offsetFromSymbolStart = "23">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -5,7 +5,6 @@
 //  Created by Mike Saradeth on 10/11/19.
 //  Copyright © 2019 Mike Saradeth. All rights reserved.
 //
-
 import UIKit
 
 class LoginOrRegisterViewController: UIViewController {
@@ -50,6 +49,7 @@ extension LoginOrRegisterViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newString = NSString(string: textField.text!).replacingCharacters(in: range, with: string)
+        
         if textField.tag == 0 { //is email
             loginRegisterButton.isEnabled = UITextField.isValidEmail(newString) && UITextField.isValidPassword(passwordTextField.text)
         } else { //is password

@@ -5,7 +5,6 @@
 //  Created by Mike Saradeth on 10/12/19.
 //  Copyright © 2019 Mike Saradeth. All rights reserved.
 //
-
 import UIKit
 
 class User: NSObject {
@@ -15,6 +14,7 @@ class User: NSObject {
     var avatar: String = ""
     var isLogin: Bool = false
     var folders: [Folder] = []
+    var selectedFolderNotes: [Note] = []
 
     var dictionary: [String: Any] {
         return [
