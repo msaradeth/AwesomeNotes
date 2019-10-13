@@ -13,13 +13,23 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var user: User!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
         FirebaseApp.configure()
-//        testFireStore()
+
+        user = User()
+        var navController: UINavigationController!
+        if user.isLogin {
+            navController = FolderListViewController.createWith(FolderViewModelImpl(user: user))
+        } else {
+            let rootVC = UIStoryboard.ininstantiateVC(storyboard: "Main", vcIdentifier: "LoginViewController") as! LoginViewController
+            rootVC.user = user
+            navController = UINavigationController(rootViewController: rootVC)
+        }
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = navController
+        window?.makeKeyAndVisible()
         
         return true
     }

@@ -13,12 +13,19 @@
 		0E3C874B23513BE6006EF565 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E3C874923513BE6006EF565 /* LaunchScreen.storyboard */; };
 		0E3C875623513BE6006EF565 /* AwesomeNotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C875523513BE6006EF565 /* AwesomeNotesTests.swift */; };
 		0E3C876123513BE6006EF565 /* AwesomeNotesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C876023513BE6006EF565 /* AwesomeNotesUITests.swift */; };
-		0E75469023518B1500837B00 /* EmailLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E75468F23518B1500837B00 /* EmailLoginViewController.swift */; };
+		0E75469023518B1500837B00 /* LoginOrRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E75468F23518B1500837B00 /* LoginOrRegisterViewController.swift */; };
 		0EA6BEE023514046008B3CB6 /* NoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA6BEDF23514046008B3CB6 /* NoteListViewController.swift */; };
 		0EA6BEE223514065008B3CB6 /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA6BEE123514065008B3CB6 /* NoteDetailViewController.swift */; };
-		0EA6BEE423514087008B3CB6 /* NoteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA6BEE323514087008B3CB6 /* NoteListViewModel.swift */; };
+		0EA6BEE423514087008B3CB6 /* NotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA6BEE323514087008B3CB6 /* NotesViewModel.swift */; };
 		0EA6BEE6235140A5008B3CB6 /* NoteDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA6BEE5235140A5008B3CB6 /* NoteDetailViewModel.swift */; };
 		0EA6BEEA2351478F008B3CB6 /* FolderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA6BEE92351478F008B3CB6 /* FolderListViewController.swift */; };
+		0EAC81942352FF8F006434B6 /* FolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAC81932352FF8F006434B6 /* FolderTableViewCell.swift */; };
+		0EAC819623530A4D006434B6 /* FolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAC819523530A4D006434B6 /* FolderViewModel.swift */; };
+		0EAC819823530A5C006434B6 /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAC819723530A5C006434B6 /* NoteViewModel.swift */; };
+		0EC696DB23527F23009A44FA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC696DA23527F23009A44FA /* User.swift */; };
+		0EC696DD235283E0009A44FA /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC696DC235283E0009A44FA /* Folder.swift */; };
+		0EC696DF2352A3B3009A44FA /* LoginOrRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC696DE2352A3B3009A44FA /* LoginOrRegisterViewModel.swift */; };
+		0EE0B4DB2353135600E67F02 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE0B4DA2353135600E67F02 /* NoteTableViewCell.swift */; };
 		0EF080B3235204A7005A05E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0EF080B2235204A7005A05E8 /* GoogleService-Info.plist */; };
 		0EF080F223522AD4005A05E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EF080F123522AD4005A05E8 /* Main.storyboard */; };
 		0EF080F8235230BC005A05E8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF080F7235230BC005A05E8 /* LoginViewController.swift */; };
@@ -58,12 +65,19 @@
 		0E3C875C23513BE6006EF565 /* AwesomeNotesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AwesomeNotesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E3C876023513BE6006EF565 /* AwesomeNotesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwesomeNotesUITests.swift; sourceTree = "<group>"; };
 		0E3C876223513BE6006EF565 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0E75468F23518B1500837B00 /* EmailLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginViewController.swift; sourceTree = "<group>"; };
+		0E75468F23518B1500837B00 /* LoginOrRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOrRegisterViewController.swift; sourceTree = "<group>"; };
 		0EA6BEDF23514046008B3CB6 /* NoteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewController.swift; sourceTree = "<group>"; };
 		0EA6BEE123514065008B3CB6 /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
-		0EA6BEE323514087008B3CB6 /* NoteListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewModel.swift; sourceTree = "<group>"; };
+		0EA6BEE323514087008B3CB6 /* NotesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewModel.swift; sourceTree = "<group>"; };
 		0EA6BEE5235140A5008B3CB6 /* NoteDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewModel.swift; sourceTree = "<group>"; };
 		0EA6BEE92351478F008B3CB6 /* FolderListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderListViewController.swift; sourceTree = "<group>"; };
+		0EAC81932352FF8F006434B6 /* FolderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderTableViewCell.swift; sourceTree = "<group>"; };
+		0EAC819523530A4D006434B6 /* FolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewModel.swift; sourceTree = "<group>"; };
+		0EAC819723530A5C006434B6 /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
+		0EC696DA23527F23009A44FA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0EC696DC235283E0009A44FA /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
+		0EC696DE2352A3B3009A44FA /* LoginOrRegisterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginOrRegisterViewModel.swift; sourceTree = "<group>"; };
+		0EE0B4DA2353135600E67F02 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		0EF080B2235204A7005A05E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0EF080F123522AD4005A05E8 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0EF080F7235230BC005A05E8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -111,7 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				0EF080F7235230BC005A05E8 /* LoginViewController.swift */,
-				0E75468F23518B1500837B00 /* EmailLoginViewController.swift */,
+				0E75468F23518B1500837B00 /* LoginOrRegisterViewController.swift */,
+				0EC696DE2352A3B3009A44FA /* LoginOrRegisterViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -143,10 +158,10 @@
 			children = (
 				0EF080F9235234F1005A05E8 /* Lib */,
 				0E75468C23518A3500837B00 /* Storyboards */,
-				0E1A00D7235153E4004C0B21 /* Login */,
-				0EA6BEDD23514018008B3CB6 /* NoteList */,
-				0EA6BEE823514734008B3CB6 /* FolderList */,
 				0EA6BEE7235140A9008B3CB6 /* Model */,
+				0E1A00D7235153E4004C0B21 /* Login */,
+				0EA6BEE823514734008B3CB6 /* FolderList */,
+				0EA6BEDD23514018008B3CB6 /* Notes */,
 				0EA6BEDE23514021008B3CB6 /* NoteDetail */,
 				0E3C874023513BE4006EF565 /* AppDelegate.swift */,
 				0E3C874723513BE6006EF565 /* Assets.xcassets */,
@@ -184,13 +199,15 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		0EA6BEDD23514018008B3CB6 /* NoteList */ = {
+		0EA6BEDD23514018008B3CB6 /* Notes */ = {
 			isa = PBXGroup;
 			children = (
 				0EA6BEDF23514046008B3CB6 /* NoteListViewController.swift */,
-				0EA6BEE323514087008B3CB6 /* NoteListViewModel.swift */,
+				0EE0B4DA2353135600E67F02 /* NoteTableViewCell.swift */,
+				0EAC819723530A5C006434B6 /* NoteViewModel.swift */,
+				0EA6BEE323514087008B3CB6 /* NotesViewModel.swift */,
 			);
-			path = NoteList;
+			path = Notes;
 			sourceTree = "<group>";
 		};
 		0EA6BEDE23514021008B3CB6 /* NoteDetail */ = {
@@ -205,6 +222,8 @@
 		0EA6BEE7235140A9008B3CB6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0EC696DA23527F23009A44FA /* User.swift */,
+				0EC696DC235283E0009A44FA /* Folder.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -213,6 +232,8 @@
 			isa = PBXGroup;
 			children = (
 				0EA6BEE92351478F008B3CB6 /* FolderListViewController.swift */,
+				0EAC81932352FF8F006434B6 /* FolderTableViewCell.swift */,
+				0EAC819523530A4D006434B6 /* FolderViewModel.swift */,
 			);
 			path = FolderList;
 			sourceTree = "<group>";
@@ -490,15 +511,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E75469023518B1500837B00 /* EmailLoginViewController.swift in Sources */,
+				0E75469023518B1500837B00 /* LoginOrRegisterViewController.swift in Sources */,
 				0EA6BEEA2351478F008B3CB6 /* FolderListViewController.swift in Sources */,
 				0EA6BEE223514065008B3CB6 /* NoteDetailViewController.swift in Sources */,
 				0E3C874123513BE4006EF565 /* AppDelegate.swift in Sources */,
+				0EC696DF2352A3B3009A44FA /* LoginOrRegisterViewModel.swift in Sources */,
+				0EAC819823530A5C006434B6 /* NoteViewModel.swift in Sources */,
 				0EF080FB23523502005A05E8 /* Extensions.swift in Sources */,
-				0EA6BEE423514087008B3CB6 /* NoteListViewModel.swift in Sources */,
+				0EA6BEE423514087008B3CB6 /* NotesViewModel.swift in Sources */,
+				0EAC81942352FF8F006434B6 /* FolderTableViewCell.swift in Sources */,
 				0EF080F8235230BC005A05E8 /* LoginViewController.swift in Sources */,
 				0EA6BEE023514046008B3CB6 /* NoteListViewController.swift in Sources */,
+				0EE0B4DB2353135600E67F02 /* NoteTableViewCell.swift in Sources */,
 				0EA6BEE6235140A5008B3CB6 /* NoteDetailViewModel.swift in Sources */,
+				0EC696DB23527F23009A44FA /* User.swift in Sources */,
+				0EAC819623530A4D006434B6 /* FolderViewModel.swift in Sources */,
+				0EC696DD235283E0009A44FA /* Folder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

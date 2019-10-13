@@ -11,10 +11,19 @@ import UIKit
 class NoteDetailViewController: UIViewController {
 
     @IBOutlet var shareButton: UIBarButtonItem!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var noteTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = shareButton
-        // Do any additional setup after loading the view.
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     @IBAction func shareButtonTapped(_ sender: Any) {
