@@ -52,7 +52,7 @@
         <!--Login Or Register View Controller-->
         <scene sceneID="zU6-KJ-TRT">
             <objects>
-                <viewController id="Eb2-tj-grV" customClass="LoginOrRegisterViewController" customModule="AwesomeNotes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="Eb2-tj-grV" customClass="LoginOrRegisterViewController" customModule="AwesomeNotes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="33l-Le-KYU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -88,8 +88,12 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zot-bW-Yf7">
-                                <rect key="frame" x="20" y="420" width="280" height="38"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
+                                <rect key="frame" x="20" y="420" width="280" height="50"/>
+                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="kte-ff-vyu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="loginRegisterButtonTapped:" destination="Eb2-tj-grV" eventType="touchUpInside" id="Oef-kS-ove"/>
@@ -109,7 +113,7 @@
                                 </connections>
                             </segmentedControl>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="KDX-rO-mlE" firstAttribute="centerX" secondItem="33l-Le-KYU" secondAttribute="centerX" id="1GB-SG-Ryu"/>
                             <constraint firstItem="NVR-QT-hla" firstAttribute="top" secondItem="TRR-SD-ieE" secondAttribute="bottom" constant="20" id="6KC-QA-2ba"/>

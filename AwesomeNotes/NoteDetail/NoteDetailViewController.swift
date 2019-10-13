@@ -13,6 +13,7 @@ class NoteDetailViewController: UIViewController {
     
     var viewModel: NoteDetailViewModel!
     
+    //MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = shareButton
@@ -23,26 +24,42 @@ class NoteDetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
+        if let text = textView.text {
+            viewModel.addOrUpdateNote(text: text) { [weak self] (error) in
+                if let error = error {
+                    self?.showAlert(title: self?.viewModel.transactionType.getErrorTitle(), message: error.localizedDescription)
+                }
+            }
+        }
     }
     
+    
+    //MARK: Actions
     @IBAction func shareButtonTapped(_ sender: Any) {
     }
     
     @IBAction func composeButtonTapped(_ sender: Any) {
-        //save and new edit
+        if let text = textView.text {
+            viewModel.addOrUpdateNote(text: text) { [weak self] (error) in
+                if let error = error {
+                    self?.showAlert(title: self?.viewModel.transactionType.getErrorTitle(), message: error.localizedDescription)
+                }
+            }
+        }
+        viewModel.transactionType = .add
+        textView.text = ""
     }
     
     @IBAction func trashButtonTapped(_ sender: Any) {
         textView.text = ""
+        if viewModel.transactionType == .update {
+            viewModel.noteViewModel.updateNumberOfNotes(folderID: viewModel.note.folderID)
+            viewModel.noteViewModel.deleteNoteDocument(note: viewModel.note) { [weak self] (error) in
+                if let error = error {
+                    self?.showAlert(title: "Delete note error", message: error.localizedDescription)
+                }
+            }
+        }
+        viewModel.transactionType = .add
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

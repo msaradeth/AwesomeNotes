@@ -13,8 +13,6 @@ class User: NSObject {
     var password: String = ""
     var avatar: String = ""
     var isLogin: Bool = false
-    var folders: [Folder] = []
-    var selectedFolderNotes: [Note] = []
 
     var dictionary: [String: Any] {
         return [

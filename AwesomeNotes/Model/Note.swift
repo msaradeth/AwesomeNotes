@@ -12,13 +12,15 @@ struct Note {
     var userID: String
     var folderID: String
     var text: String
+    var timestamp: String
     
     var dictionary: [String: Any] {
         return [
             "documentID": documentID,
             "userID": userID,
             "folderID": folderID,
-            "text"    : text
+            "text"    : text,
+            "timestamp"    : timestamp
         ]
     }
 }
@@ -27,7 +29,8 @@ extension Note: DocumentSerializable {
     init?(documentID: String, dictionary: [String : Any]) {
         guard let userID = dictionary["userID"] as? String,
             let folderID = dictionary["folderID"] as? String,
-            let text = dictionary["text"] as? String else { return nil }
-        self.init(documentID: documentID, userID: userID, folderID: folderID, text: text)
+            let text = dictionary["text"] as? String,
+            let timestamp = dictionary["timestamp"] as? String else { return nil }
+        self.init(documentID: documentID, userID: userID, folderID: folderID, text: text, timestamp: timestamp)
     }
 }

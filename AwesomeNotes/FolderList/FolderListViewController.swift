@@ -25,6 +25,7 @@ class FolderListViewController: UIViewController {
         return navController
     }
     
+    //MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = logoutButton
@@ -43,9 +44,10 @@ class FolderListViewController: UIViewController {
     
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? NoteListViewController, let folder = sender as? Folder {
+        if let vc = segue.destination as? NoteListViewController,
+            let folder = sender as? Folder {
             vc.title = folder.folderName
-            vc.viewModel = NoteViewModelImpl(user: viewModel.user, folder: folder)
+            vc.viewModel = NoteViewModelImpl(user: viewModel.user, folder: folder, notes: [])
         }
     }
     
@@ -94,6 +96,10 @@ extension FolderListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        viewModel.deleteFolderDocument(folder: viewModel.folders[indexPath.item])
+        viewModel.deleteFolderDocument(folder: viewModel.folders[indexPath.item]) { [weak self] (error) in
+            if let error = error {
+                self?.showAlert(title: "Delete folder error", message: error.localizedDescription)
+            }
+        }
     }
 }

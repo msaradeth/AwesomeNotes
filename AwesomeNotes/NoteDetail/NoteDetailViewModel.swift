@@ -6,11 +6,55 @@
 //  Copyright © 2019 Mike Saradeth. All rights reserved.
 //
 import Foundation
+import Firebase
 
-class NoteDetailViewModel: NSObject {
-    var note: Note
+enum TransactionType {
+    case add
+    case update
     
-    init(note: Note) {
+    func getErrorTitle() -> String {
+        switch self {
+        case .add:
+            return "Add note error"
+        case .update:
+            return "Update note error"
+        }
+    }
+}
+
+protocol NoteDetailViewModel: NSObjectProtocol {
+    var note: Note { get set }
+    var noteViewModel: NoteViewModel { get set }
+    var transactionType: TransactionType { get set }
+    func updateNoteDocument(text: String, completion: @escaping (Error?)->Void)
+    func addOrUpdateNote(text: String, completion: @escaping (Error?)->Void) 
+}
+
+class NoteDetailViewModelImpl: NSObject, NoteDetailViewModel {
+    var note: Note
+    var noteViewModel: NoteViewModel
+    var transactionType: TransactionType
+    
+    init(note: Note, noteViewModel: NoteViewModel, transactionType: TransactionType) {
         self.note = note
+        self.noteViewModel = noteViewModel
+        self.transactionType = transactionType
+    }
+    
+    func updateNoteDocument(text: String, completion: @escaping (Error?)->Void) {
+        let db = Firestore.firestore().collection("notes")
+        db.document(note.documentID).updateData([
+            "text" : text]) { (error) in
+                completion(error)
+        }
+    }
+    
+    func addOrUpdateNote(text: String, completion: @escaping (Error?)->Void) {
+        if transactionType == .add {
+            if text.isEmpty { return }
+            noteViewModel.addNoteDocument(text, completion: completion)
+        } else {
+            updateNoteDocument(text: text, completion: completion)
+        }
     }
 }

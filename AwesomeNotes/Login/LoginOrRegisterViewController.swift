@@ -30,7 +30,7 @@ class LoginOrRegisterViewController: UIViewController {
                 self?.showAlert(title: self?.viewModel.selectedIndex.getValue(), message: error.localizedDescription)
             } else {
                 guard let user = self?.viewModel.user else { return }
-                UIApplication.shared.keyWindow?.rootViewController = FolderListViewController.createWith(FolderViewModelImpl(user: user))
+                UIApplication.shared.keyWindow?.rootViewController = FolderListViewController.createWith(FolderViewModelImpl(user: user, folders: []))
             }
         }
     }

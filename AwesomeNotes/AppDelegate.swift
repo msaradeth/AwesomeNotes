@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         user = User()
         var navController: UINavigationController!
         if user.isLogin {
-            navController = FolderListViewController.createWith(FolderViewModelImpl(user: user))
+            navController = FolderListViewController.createWith(FolderViewModelImpl(user: user, folders: []))
         } else {
             let rootVC = UIStoryboard.ininstantiateVC(storyboard: "Main", vcIdentifier: "LoginViewController") as! LoginViewController
             rootVC.user = user

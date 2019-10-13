@@ -185,6 +185,7 @@
                     <connections>
                         <outlet property="cancelButton" destination="H2R-Ry-GGj" id="WfY-fB-MnL"/>
                         <outlet property="editButton" destination="WXd-vE-k6y" id="oA7-TG-Cnn"/>
+                        <outlet property="noteButton" destination="goW-AL-v3U" id="6A3-iI-2eV"/>
                         <outlet property="tableView" destination="OdH-53-whm" id="VRD-MA-SbZ"/>
                         <segue destination="uA3-Rk-WUI" kind="show" identifier="showNoteDetail" id="1aN-ZB-DhW"/>
                     </connections>

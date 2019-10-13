@@ -10,28 +10,27 @@ import Firebase
 
 protocol FolderViewModel {
     var user: User { get set }
-    var folders: [Folder] { get }
+    var folders: [Folder] { get set }
     func addFolderDocument(_ folderName: String)
-    func deleteFolderDocument(folder: Folder) 
+    func deleteFolderDocument(folder: Folder, completion: @escaping (Error?)->Void)
     func addFolderChangeListioner(completion: @escaping ()->Void)
 }
 
 class FolderViewModelImpl: NSObject {
     var user: User
-    var folders: [Folder] {
-        return user.folders
-    }
+    var folders: [Folder]
     
-    init(user: User) {
+    init(user: User, folders: [Folder]) {
         self.user = user
+        self.folders = folders
     }
 }
 
 //MARK: FolderViewModel
 extension FolderViewModelImpl: FolderViewModel {
     func addFolderDocument(_ folderName: String) {
-        let folderRef = Firestore.firestore().collection("folders")
-        folderRef.addDocument(data: [
+        let db = Firestore.firestore().collection("folders")
+        db.addDocument(data: [
             "folderName"  : folderName,
             "userID"      : user.userID,
             "numberOfNotes": 0,
@@ -39,19 +38,26 @@ extension FolderViewModelImpl: FolderViewModel {
             ])
     }
     
-    func deleteFolderDocument(folder: Folder) {
-        Firestore.firestore().collection("folders").document(folder.documentID).delete() { error in
-            if let error = error {
-                print("Error removing document: \(error)")
-            } else {
-                print("Document successfully removed!")
-            }
+    func deleteFolderDocument(folder: Folder, completion: @escaping (Error?)->Void) {
+        let folderDatabase = Firestore.firestore().collection("folders")
+        folderDatabase.document(folder.documentID).delete() { error in
+            guard error == nil else { completion(error); return }
+        }
+            
+        let notesDatabase = Firestore.firestore().collection("notes")
+        notesDatabase.whereField("folderID", isEqualTo: folder.documentID).getDocuments { (snapshot, error) in
+            guard error == nil, let documents = snapshot?.documents else { completion(error); return }
+            documents.forEach({ (document) in
+                Firestore.firestore().collection("notes").document(document.documentID).delete() { error in
+                    guard error == nil else { completion(error); return }
+                }
+            })
         }
     }
     
     func addFolderChangeListioner(completion: @escaping ()->Void) {
-        let folderRef = Firestore.firestore().collection("folders").whereField("userID", isEqualTo: user.userID)
-        folderRef.addSnapshotListener { [weak self] (snapshot, error) in
+        let db = Firestore.firestore().collection("folders")
+        db.whereField("userID", isEqualTo: user.userID).addSnapshotListener { [weak self] (snapshot, error) in
             guard let documents = snapshot?.documents else { return }
             var folders = [Folder]()
             documents.forEach({ (document) in
@@ -59,21 +65,8 @@ extension FolderViewModelImpl: FolderViewModel {
                     folders.append(folder)
                 }
             })
-            self?.user.folders = folders.sorted(by: {$0.timestamp > $1.timestamp})
+            self?.folders = folders.sorted(by: {$0.timestamp > $1.timestamp})
             completion()
         }
     }
-    
-//    func loadFolderDocuments(completion: @escaping ()->Void) {
-//        let folderRef = Firestore.firestore().collection("folders")
-//        folderRef.whereField("userID", isEqualTo: user.userID).getDocuments { (querySnapshot, error) in
-//            if let error = error {
-//                print("Error getting documents: \(error)")
-//            } else {
-//                for document in querySnapshot!.documents {
-//                    print("\(document.documentID) => \(document.data())")
-//                }
-//            }
-//        }
-//    }
 }
