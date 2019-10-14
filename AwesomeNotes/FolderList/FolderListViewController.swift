@@ -16,13 +16,10 @@ class FolderListViewController: UIViewController {
     var viewModel: FolderViewModel!
     
     //helper function - reusable code
-    static func createWith(_ viewModel: FolderViewModel) -> UINavigationController{
-        let vc = UIStoryboard.ininstantiateVC(storyboard: "Notes", vcIdentifier: "FolderListViewController") as! FolderListViewController
+    static func createWith(_ viewModel: FolderViewModel) -> FolderListViewController {
+        let vc = UIStoryboard.instantiateVC(storyboard: "Notes", vcIdentifier: "FolderListViewController") as! FolderListViewController
         vc.viewModel = viewModel
-        let navController = UINavigationController(rootViewController: vc)
-        navController.navigationBar.prefersLargeTitles = true
-        navController.isToolbarHidden = false
-        return navController
+        return vc
     }
     
     //MARK: Life Cycle
@@ -47,7 +44,8 @@ class FolderListViewController: UIViewController {
         if let vc = segue.destination as? NoteListViewController,
             let folder = sender as? Folder {
             vc.title = folder.folderName
-            vc.viewModel = NoteViewModelImpl(user: viewModel.user, folder: folder, notes: [])
+            let noteViewModel = NoteViewModelImpl(user: viewModel.user, folder: folder, notes: [], databaseService: viewModel.databaseService)
+            vc.viewModel = noteViewModel
         }
     }
     
@@ -69,8 +67,10 @@ class FolderListViewController: UIViewController {
     }
 
     @IBAction func logoutTapped(_ sender: Any) {
-        viewModel.user.isLogin = false
-        UIApplication.shared.keyWindow?.rootViewController = LoginViewController.createWith(viewModel.user)
+        viewModel.logout()
+        let loginViewController = LoginViewController.createWith(viewModel.user)
+        loginViewController.databaseService = viewModel.databaseService
+        UIApplication.shared.keyWindow?.rootViewController = UINavigationController(rootViewController: loginViewController)
     }
 }
 

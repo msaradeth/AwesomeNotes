@@ -9,6 +9,32 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Flash Screen-->
+        <scene sceneID="Oza-TY-kzS">
+            <objects>
+                <viewController storyboardIdentifier="FlashScreen" id="jR6-3E-l6S" customClass="FlashScreen" customModule="AwesomeNotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cAG-W3-YjB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="nNB-fa-S9v">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nNB-fa-S9v" firstAttribute="top" secondItem="LqK-UD-c2c" secondAttribute="top" id="OsR-TI-guV"/>
+                            <constraint firstItem="LqK-UD-c2c" firstAttribute="trailing" secondItem="nNB-fa-S9v" secondAttribute="trailing" id="eJb-oE-htI"/>
+                            <constraint firstItem="nNB-fa-S9v" firstAttribute="leading" secondItem="LqK-UD-c2c" secondAttribute="leading" id="ggZ-Gh-Fkb"/>
+                            <constraint firstItem="LqK-UD-c2c" firstAttribute="bottom" secondItem="nNB-fa-S9v" secondAttribute="bottom" id="yRv-15-eNX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LqK-UD-c2c"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hyi-XY-b0W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1037" y="171"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="vj4-H2-QE2">
             <objects>
@@ -41,18 +67,18 @@
                     <navigationItem key="navigationItem" id="ncf-21-OPr"/>
                     <connections>
                         <outlet property="loginSignup" destination="WN3-6h-Vwv" id="OmB-Fv-LLY"/>
-                        <segue destination="Eb2-tj-grV" kind="show" identifier="showLoginOrSignup" id="NXr-2I-dSJ"/>
+                        <segue destination="Eb2-tj-grV" kind="show" identifier="showEmailLogin" id="NXr-2I-dSJ"/>
                         <segue destination="FT8-C2-HCk" kind="show" identifier="showFolders" id="Ln3-Hu-4hD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zJp-wR-ly8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1060.8695652173915" y="162.72321428571428"/>
+            <point key="canvasLocation" x="2056.875" y="162.67605633802816"/>
         </scene>
         <!--Login Or Register View Controller-->
         <scene sceneID="zU6-KJ-TRT">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="Eb2-tj-grV" customClass="LoginOrRegisterViewController" customModule="AwesomeNotes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginOrRegisterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Eb2-tj-grV" customClass="LoginOrRegisterViewController" customModule="AwesomeNotes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="33l-Le-KYU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -136,7 +162,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uCJ-Ph-YlI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1945" y="-205"/>
+            <point key="canvasLocation" x="2941.875" y="-205.98591549295776"/>
         </scene>
         <!--Notes-->
         <scene sceneID="9kB-gc-Fj9">
@@ -144,7 +170,7 @@
                 <viewControllerPlaceholder storyboardName="Notes" id="FT8-C2-HCk" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vsu-SM-2uK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1945" y="340"/>
+            <point key="canvasLocation" x="2941.875" y="339.08450704225351"/>
         </scene>
     </scenes>
     <resources>

@@ -28,11 +28,15 @@ class LoginOrRegisterViewController: UIViewController {
     //MARK: Actions
     @IBAction func loginRegisterButtonTapped(_ sender: Any) {
         viewModel.doLoginOrRegister(email: emailTextField.text, password: passwordTextField.text) { [weak self] (error) in
+            guard let self = self else { return }
             if let error = error {
-                self?.showAlert(title: self?.viewModel.selectedIndex.getValue(), message: error.localizedDescription)
+                self.showAlert(title: self.viewModel.selectedIndex.getValue(), message: error.localizedDescription)
             } else {
-                guard let user = self?.viewModel.user else { return }
-                UIApplication.shared.keyWindow?.rootViewController = FolderListViewController.createWith(FolderViewModelImpl(user: user, folders: []))
+                let folderViewModel = FolderViewModelImpl(user: self.viewModel.user, folders: [], databaseService: self.viewModel.databaseService)
+                let folderListViewController = FolderListViewController.createWith(folderViewModel)
+                self.navigationController?.isToolbarHidden = false
+                self.navigationController?.navigationBar.prefersLargeTitles = true
+                self.navigationController?.setViewControllers([folderListViewController], animated: true)
             }
         }
     }

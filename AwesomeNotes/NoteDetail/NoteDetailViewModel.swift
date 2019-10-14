@@ -26,6 +26,7 @@ protocol NoteDetailViewModel: NSObjectProtocol {
     var note: Note { get set }
     var noteViewModel: NoteViewModel { get set }
     var transactionType: TransactionType { get set }
+    var databaseService: DatabaseService { get }
     func updateNoteDocument(text: String, completion: @escaping (Error?)->Void)
     func addOrUpdateNote(text: String, completion: @escaping (Error?)->Void)
     func undoDelete() -> String?
@@ -37,19 +38,17 @@ class NoteDetailViewModelImpl: NSObject, NoteDetailViewModel {
     var noteViewModel: NoteViewModel
     var transactionType: TransactionType
     var deletedTextStack = [String]()
+    var databaseService: DatabaseService
     
-    init(note: Note, noteViewModel: NoteViewModel, transactionType: TransactionType) {
+    init(note: Note, noteViewModel: NoteViewModel, transactionType: TransactionType, databaseService: DatabaseService) {
         self.note = note
         self.noteViewModel = noteViewModel
         self.transactionType = transactionType
+        self.databaseService = databaseService
     }
     
     func updateNoteDocument(text: String, completion: @escaping (Error?)->Void) {
-        let db = Firestore.firestore().collection("notes")
-        db.document(note.documentID).updateData([
-            "text" : text]) { (error) in
-                completion(error)
-        }
+        databaseService.updateNoteDocument(text: text, documentID: note.documentID, completion: completion)
     }
     
     func addOrUpdateNote(text: String, completion: @escaping (Error?)->Void) {

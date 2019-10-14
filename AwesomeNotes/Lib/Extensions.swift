@@ -50,7 +50,7 @@ extension UIViewController {
 }
 
 extension UIStoryboard {
-    static func ininstantiateVC(storyboard: String, vcIdentifier: String) -> UIViewController {
+    static func instantiateVC(storyboard: String, vcIdentifier: String) -> UIViewController {
         return UIStoryboard(name: storyboard, bundle: nil).instantiateViewController(withIdentifier: vcIdentifier)
     }
 }
@@ -84,4 +84,8 @@ extension UIView {
         self.layer.cornerRadius = self.bounds.size.width / 2.0
         self.clipsToBounds = true
     }
+}
+
+extension FileManager {
+    static let docutmentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
 }

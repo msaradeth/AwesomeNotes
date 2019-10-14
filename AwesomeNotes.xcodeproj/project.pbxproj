@@ -26,6 +26,9 @@
 		0EC696DD235283E0009A44FA /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC696DC235283E0009A44FA /* Folder.swift */; };
 		0EC696DF2352A3B3009A44FA /* LoginOrRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC696DE2352A3B3009A44FA /* LoginOrRegisterViewModel.swift */; };
 		0EE0B4DB2353135600E67F02 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE0B4DA2353135600E67F02 /* NoteTableViewCell.swift */; };
+		0EEC6AB123540A4C00D4E2EC /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEC6AB023540A4C00D4E2EC /* DatabaseService.swift */; };
+		0EEC6AB3235431EF00D4E2EC /* FlashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEC6AB2235431EF00D4E2EC /* FlashScreen.swift */; };
+		0EEC6AB5235439C300D4E2EC /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEC6AB4235439C300D4E2EC /* NavController.swift */; };
 		0EF080B3235204A7005A05E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0EF080B2235204A7005A05E8 /* GoogleService-Info.plist */; };
 		0EF080F223522AD4005A05E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EF080F123522AD4005A05E8 /* Main.storyboard */; };
 		0EF080F8235230BC005A05E8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF080F7235230BC005A05E8 /* LoginViewController.swift */; };
@@ -78,6 +81,9 @@
 		0EC696DC235283E0009A44FA /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
 		0EC696DE2352A3B3009A44FA /* LoginOrRegisterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginOrRegisterViewModel.swift; sourceTree = "<group>"; };
 		0EE0B4DA2353135600E67F02 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
+		0EEC6AB023540A4C00D4E2EC /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		0EEC6AB2235431EF00D4E2EC /* FlashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashScreen.swift; sourceTree = "<group>"; };
+		0EEC6AB4235439C300D4E2EC /* NavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
 		0EF080B2235204A7005A05E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0EF080F123522AD4005A05E8 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0EF080F7235230BC005A05E8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +162,7 @@
 		0E3C873F23513BE4006EF565 /* AwesomeNotes */ = {
 			isa = PBXGroup;
 			children = (
+				0E87469523544D0500E176C7 /* Application */,
 				0E75468C23518A3500837B00 /* Storyboards */,
 				0EA6BEE7235140A9008B3CB6 /* Model */,
 				0E1A00D7235153E4004C0B21 /* Login */,
@@ -163,7 +170,6 @@
 				0EA6BEDD23514018008B3CB6 /* NotesList */,
 				0EA6BEDE23514021008B3CB6 /* NoteDetail */,
 				0EF080F9235234F1005A05E8 /* Lib */,
-				0E3C874023513BE4006EF565 /* AppDelegate.swift */,
 				0E3C874723513BE6006EF565 /* Assets.xcassets */,
 				0E3C874923513BE6006EF565 /* LaunchScreen.storyboard */,
 				0E3C874C23513BE6006EF565 /* Info.plist */,
@@ -197,6 +203,16 @@
 				0E3C874423513BE5006EF565 /* Notes.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		0E87469523544D0500E176C7 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				0E3C874023513BE4006EF565 /* AppDelegate.swift */,
+				0EEC6AB4235439C300D4E2EC /* NavController.swift */,
+				0EEC6AB2235431EF00D4E2EC /* FlashScreen.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 		0EA6BEDD23514018008B3CB6 /* NotesList */ = {
@@ -242,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				0EF080FA23523502005A05E8 /* Extensions.swift */,
+				0EEC6AB023540A4C00D4E2EC /* DatabaseService.swift */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -513,6 +530,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EEC6AB123540A4C00D4E2EC /* DatabaseService.swift in Sources */,
 				0E75469023518B1500837B00 /* LoginOrRegisterViewController.swift in Sources */,
 				0EA6BEEA2351478F008B3CB6 /* FolderListViewController.swift in Sources */,
 				0EA6BEE223514065008B3CB6 /* NoteDetailViewController.swift in Sources */,
@@ -524,8 +542,10 @@
 				0EF080F8235230BC005A05E8 /* LoginViewController.swift in Sources */,
 				0EA6BEE023514046008B3CB6 /* NoteListViewController.swift in Sources */,
 				0EE0B4DB2353135600E67F02 /* NoteTableViewCell.swift in Sources */,
+				0EEC6AB3235431EF00D4E2EC /* FlashScreen.swift in Sources */,
 				0E090E4123537D9500B7F63F /* Note.swift in Sources */,
 				0EA6BEE6235140A5008B3CB6 /* NoteDetailViewModel.swift in Sources */,
+				0EEC6AB5235439C300D4E2EC /* NavController.swift in Sources */,
 				0EC696DB23527F23009A44FA /* User.swift in Sources */,
 				0EAC819623530A4D006434B6 /* FolderViewModel.swift in Sources */,
 				0EC696DD235283E0009A44FA /* Folder.swift in Sources */,

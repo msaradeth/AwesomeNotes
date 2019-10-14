@@ -10,12 +10,12 @@ import UIKit
 class LoginViewController: UIViewController {
     @IBOutlet weak var loginSignup: UIButton!
     var user: User!
+    var databaseService: DatabaseService!
     
-    static func createWith(_ user: User) -> UINavigationController{
-        let vc = UIStoryboard.ininstantiateVC(storyboard: "Main", vcIdentifier: "LoginViewController") as! LoginViewController
+    static func createWith(_ user: User) -> LoginViewController {
+        let vc = UIStoryboard.instantiateVC(storyboard: "Main", vcIdentifier: "LoginViewController") as! LoginViewController
         vc.user = user
-        let navController = UINavigationController(rootViewController: vc)
-        return navController
+        return vc
     }
     
     override func viewDidLoad() {
@@ -23,12 +23,12 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginSignupTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "showLoginOrSignup", sender: self)
+        self.performSegue(withIdentifier: "showEmailLogin", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let emailLoginVC = segue.destination as? LoginOrRegisterViewController {
-            emailLoginVC.viewModel = LoginOrRegisterViewModelImpl(user: user)
+            emailLoginVC.viewModel = LoginOrRegisterViewModelImpl(user: user, databaseService: databaseService)
         }
     }
 }

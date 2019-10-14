@@ -52,7 +52,7 @@ class NoteListViewController: UIViewController {
     
     @IBAction func composeButtonTapped(_ sender: UIBarButtonItem) {
         let note = Note(documentID: "", userID: "", folderID: "", text: "", timestamp: "")
-        let noteDetailViewModel = NoteDetailViewModelImpl(note: note, noteViewModel: viewModel, transactionType: .add)
+        let noteDetailViewModel = NoteDetailViewModelImpl(note: note, noteViewModel: viewModel, transactionType: .add, databaseService: viewModel.databaseService)
         self.performSegue(withIdentifier: "showNoteDetail", sender: noteDetailViewModel)
     }
 }
@@ -74,7 +74,7 @@ extension NoteListViewController: UITableViewDataSource {
 extension NoteListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let noteDetailViewModel = NoteDetailViewModelImpl(note: viewModel.notes[indexPath.item], noteViewModel: viewModel, transactionType: .update)
+        let noteDetailViewModel = NoteDetailViewModelImpl(note: viewModel.notes[indexPath.item], noteViewModel: viewModel, transactionType: .update, databaseService: viewModel.databaseService)
         self.performSegue(withIdentifier: "showNoteDetail", sender: noteDetailViewModel)
     }
     

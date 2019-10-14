@@ -11,6 +11,7 @@ import Firebase
 protocol NoteViewModel: NSObjectProtocol {
     var user: User { get set }
     var notes: [Note] { get set }
+    var databaseService: DatabaseService { get }
     func deleteNoteDocument(note: Note, completion: @escaping (Error?)->Void)
     func addNoteDocument(_ text: String, completion: @escaping (Error?)->Void)
     func updateNumberOfNotes(folderID: String) 
@@ -21,47 +22,18 @@ class NoteViewModelImpl: NSObject {
     var user: User
     var folder: Folder
     var notes: [Note]
+    var databaseService: DatabaseService
     
-    init(user: User, folder: Folder, notes: [Note]) {
+    init(user: User, folder: Folder, notes: [Note], databaseService: DatabaseService) {
         self.user = user
         self.folder = folder
         self.notes = notes
+        self.databaseService = databaseService
     }
 }
 
 //MARK: FolderViewModel
 extension NoteViewModelImpl: NoteViewModel {
-    func addNoteDocument(_ text: String, completion: @escaping (Error?)->Void) {
-        let db = Firestore.firestore().collection("notes")
-        db.addDocument(data: [
-            "userID"    : user.userID,
-            "folderID"  : folder.documentID,
-            "text"     : text,
-            "timestamp" : Date.getTimestamp()
-        ]) { error in
-            completion(error)
-        }
-        updateNumberOfNotes(folderID: folder.documentID)
-    }
-    
-    func deleteNoteDocument(note: Note, completion: @escaping (Error?)->Void) {
-        let db = Firestore.firestore().collection("notes")
-        db.document(note.documentID).delete() { error in
-            completion(error)
-        }
-        updateNumberOfNotes(folderID: note.folderID)
-    }
-    
-    func updateNumberOfNotes(folderID: String) {
-        let notesDatabase = Firestore.firestore().collection("notes")
-        notesDatabase.whereField("folderID", isEqualTo: folderID).getDocuments { (snapshot, error) in
-            guard error == nil, let documents = snapshot?.documents else { return }
-            
-            let folderDatabase = Firestore.firestore().collection("folders").document(folderID)
-            folderDatabase.updateData(["numberOfNotes" : documents.count])
-        }
-    }
-    
     func addNoteChangeListioner(completion: @escaping ()->Void) {
         let db = Firestore.firestore().collection("notes")
         db.whereField("folderID", isEqualTo: folder.documentID).addSnapshotListener { [weak self] (snapshot, error) in
@@ -76,4 +48,17 @@ extension NoteViewModelImpl: NoteViewModel {
             completion()
         }
     }
+    
+    func addNoteDocument(_ text: String, completion: @escaping (Error?)->Void) {
+        databaseService.addNoteDocument(text, userID: user.userID, documentID: folder.documentID, completion: completion)
+    }
+    
+    func deleteNoteDocument(note: Note, completion: @escaping (Error?)->Void) {
+        databaseService.deleteNoteDocument(note: note, completion: completion)
+    }
+    
+    func updateNumberOfNotes(folderID: String) {
+        databaseService.updateNumberOfNotes(folderID: folderID)
+    }
+
 }

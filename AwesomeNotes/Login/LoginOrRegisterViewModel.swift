@@ -27,52 +27,43 @@ enum SelectedIndexType: Int {
 protocol LoginOrRegiterViewModel {
     var user: User { get set }
     var selectedIndex: SelectedIndexType { get set }
+    var databaseService: DatabaseService { get set }
     func doLoginOrRegister(email: String?, password: String?, completion: @escaping (Error?)->Void)
 }
 
 class LoginOrRegisterViewModelImpl: NSObject {
     var user: User
     var selectedIndex: SelectedIndexType
+    var databaseService: DatabaseService
     
     //Mark: init
-    init(selectIndex: SelectedIndexType = .login, user: User) {
+    init(selectIndex: SelectedIndexType = .login, user: User, databaseService: DatabaseService) {
         self.selectedIndex = selectIndex
         self.user = user
+        self.databaseService = databaseService
     }
-    
     
     //Mark: login and sign up helper methods
     private func login(email: String, password: String, completion: @escaping (Error?)->Void) {
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] (result, error) in
-            if error == nil, let userID = result?.user.uid {
-                self?.updateUser(email: email, password: password, userID: userID)
-            }
+        databaseService.signIn(email: email, password: password) { (user, error) in
+            guard let user = user else { completion(error); return }
+            self.user = user
             completion(error)
         }
     }
     
     private func register(email: String, password: String, completion: @escaping (Error?)->Void) {
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] (result, error) in
-            if error == nil, let userID = result?.user.uid {
-                self?.updateUser(email: email, password: password, userID: userID)
-            }
+        databaseService.createUser(email: email, password: password) { (user, error) in
+            guard let user = user else { completion(error); return }
+            self.user = user
             completion(error)
         }
-    }
-    
-    private func updateUser(email: String, password: String, userID: String) {
-        print(userID)
-        user.userID = userID
-        user.isLogin = true
-        user.email = email
-        user.password = password
     }
 }
 
 extension LoginOrRegisterViewModelImpl: LoginOrRegiterViewModel {
     func doLoginOrRegister(email: String?, password: String?, completion: @escaping (Error?)->Void) {
-        guard let email = email,
-            let password = password else { return }
+        guard let email = email, let password = password else { return }
         if selectedIndex == .login {
             login(email: email, password: password, completion: completion)
         } else {
