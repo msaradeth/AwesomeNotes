@@ -100,7 +100,7 @@
                         <action selector="editButtonTapped:" destination="BYZ-38-t0r" id="EOj-CB-kM7"/>
                     </connections>
                 </barButtonItem>
-                <barButtonItem systemItem="cancel" id="Qes-II-hHu">
+                <barButtonItem systemItem="done" id="Qes-II-hHu">
                     <connections>
                         <action selector="cancelButtonTapped:" destination="BYZ-38-t0r" id="0oP-Vd-If8"/>
                     </connections>
@@ -198,7 +198,7 @@
                         <action selector="editButtonTapped:" destination="gmA-CM-KAf" id="vVd-bZ-M3K"/>
                     </connections>
                 </barButtonItem>
-                <barButtonItem systemItem="cancel" id="H2R-Ry-GGj">
+                <barButtonItem systemItem="done" id="H2R-Ry-GGj">
                     <connections>
                         <action selector="cancelButtonTapped:" destination="gmA-CM-KAf" id="oIN-q3-al3"/>
                     </connections>

@@ -45,17 +45,17 @@ class LoginOrRegisterViewModelImpl: NSObject {
     
     //Mark: login and sign up helper methods
     private func login(email: String, password: String, completion: @escaping (Error?)->Void) {
-        databaseService.signIn(email: email, password: password) { (user, error) in
+        databaseService.signIn(email: email, password: password) { [weak self] (user, error) in
             guard let user = user else { completion(error); return }
-            self.user = user
+            self?.user = user
             completion(error)
         }
     }
     
     private func register(email: String, password: String, completion: @escaping (Error?)->Void) {
-        databaseService.createUser(email: email, password: password) { (user, error) in
+        databaseService.createUser(email: email, password: password) { [weak self] (user, error) in
             guard let user = user else { completion(error); return }
-            self.user = user
+            self?.user = user
             completion(error)
         }
     }

@@ -86,8 +86,8 @@ extension DatabaseService {
             guard error == nil else { completion(error); return }
         }
         
-        let notesDatabase = Firestore.firestore().collection("notes")
-        notesDatabase.whereField("folderID", isEqualTo: folder.documentID).getDocuments { (snapshot, error) in
+        let db = Firestore.firestore().collection("notes")
+        db.whereField("folderID", isEqualTo: folder.documentID).getDocuments { (snapshot, error) in
             guard error == nil, let documents = snapshot?.documents else { completion(error); return }
             documents.forEach({ (document) in
                 Firestore.firestore().collection("notes").document(document.documentID).delete() { error in
@@ -123,15 +123,14 @@ extension DatabaseService {
     
     func updateNoteDocument(text: String, documentID: String, completion: @escaping (Error?)->Void) {
         let db = Firestore.firestore().collection("notes")
-        db.document(documentID).updateData([
-            "text" : text]) { (error) in
-                completion(error)
+        db.document(documentID).updateData(["text" : text]) { (error) in
+            completion(error)
         }
     }
     
     func updateNumberOfNotes(folderID: String) {
-        let notesDatabase = Firestore.firestore().collection("notes")
-        notesDatabase.whereField("folderID", isEqualTo: folderID).getDocuments { (snapshot, error) in
+        let db = Firestore.firestore().collection("notes")
+        db.whereField("folderID", isEqualTo: folderID).getDocuments { (snapshot, error) in
             guard error == nil, let documents = snapshot?.documents else { return }
             
             let folderDatabase = Firestore.firestore().collection("folders").document(folderID)

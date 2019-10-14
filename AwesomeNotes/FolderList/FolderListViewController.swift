@@ -70,7 +70,7 @@ class FolderListViewController: UIViewController {
         viewModel.logout()
         let loginViewController = LoginViewController.createWith(viewModel.user)
         loginViewController.databaseService = viewModel.databaseService
-        UIApplication.shared.keyWindow?.rootViewController = UINavigationController(rootViewController: loginViewController)
+        self.navigationController?.setViewControllers([loginViewController], animated: true)
     }
 }
 

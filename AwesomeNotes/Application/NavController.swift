@@ -15,7 +15,8 @@ class NavController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getUser { (user) in
+        getUser { [weak self] (user) in
+            guard let self = self else { return }
             if user.isLogin {
                 let vc = FolderListViewController.createWith(FolderViewModelImpl(user: user, folders: [], databaseService: self.databaseService))
                 DispatchQueue.main.async {
