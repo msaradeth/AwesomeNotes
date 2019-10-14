@@ -23,7 +23,7 @@
                                     <constraint firstAttribute="height" constant="50" id="Jp1-eA-VM8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
-                                <state key="normal" title="Login/Sign up"/>
+                                <state key="normal" title="Email Login/Sign up"/>
                                 <connections>
                                     <action selector="loginSignupTapped:" destination="1qM-qd-vDH" eventType="touchUpInside" id="JaR-NZ-Q3d"/>
                                 </connections>
