@@ -116,40 +116,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OdH-53-whm">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OdH-53-whm">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteTableViewCell" id="Dpg-3b-3q2" customClass="NoteTableViewCell" customModule="AwesomeNotes" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="55"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dpg-3b-3q2" id="U4v-df-Q1Q">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="54.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="64.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHq-Ai-o0u">
-                                                    <rect key="frame" x="8" y="0.0" width="398" height="25"/>
+                                                    <rect key="frame" x="8" y="10" width="398" height="17"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="25" id="nnR-A8-QTv"/>
+                                                        <constraint firstAttribute="height" constant="17" id="nnR-A8-QTv"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSW-f8-72n">
-                                                    <rect key="frame" x="8" y="25" width="398" height="29.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <rect key="frame" x="8" y="34" width="398" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="18" id="wad-eR-0mz"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="OSW-f8-72n" secondAttribute="bottom" id="2BN-Ad-e7x"/>
-                                                <constraint firstItem="MHq-Ai-o0u" firstAttribute="top" secondItem="U4v-df-Q1Q" secondAttribute="top" id="DMr-Mq-0Di"/>
+                                                <constraint firstItem="MHq-Ai-o0u" firstAttribute="top" secondItem="U4v-df-Q1Q" secondAttribute="top" constant="10" id="DMr-Mq-0Di"/>
                                                 <constraint firstItem="OSW-f8-72n" firstAttribute="leading" secondItem="U4v-df-Q1Q" secondAttribute="leading" constant="8" id="EZP-bc-Ruo"/>
                                                 <constraint firstAttribute="trailing" secondItem="OSW-f8-72n" secondAttribute="trailing" constant="8" id="OZg-lP-dqo"/>
                                                 <constraint firstAttribute="trailing" secondItem="MHq-Ai-o0u" secondAttribute="trailing" constant="8" id="Q2Q-1g-gzJ"/>
-                                                <constraint firstItem="OSW-f8-72n" firstAttribute="top" secondItem="MHq-Ai-o0u" secondAttribute="bottom" id="s5X-dk-PAd"/>
+                                                <constraint firstItem="OSW-f8-72n" firstAttribute="top" secondItem="MHq-Ai-o0u" secondAttribute="bottom" constant="7" id="s5X-dk-PAd"/>
                                                 <constraint firstItem="MHq-Ai-o0u" firstAttribute="leading" secondItem="U4v-df-Q1Q" secondAttribute="leading" constant="8" id="zTa-LM-QBG"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -171,7 +173,6 @@
                         <viewLayoutGuide key="safeArea" id="X1J-dY-FPh"/>
                     </view>
                     <toolbarItems>
-                        <barButtonItem systemItem="camera" id="XEY-Ir-dZf"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="c1Q-k3-nMW"/>
                         <barButtonItem title="3 notes" id="goW-AL-v3U"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="zze-q6-JXC"/>
@@ -235,6 +236,12 @@
                                 <action selector="trashButtonTapped:" destination="uA3-Rk-WUI" id="bvn-7m-C9D"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="RA8-fj-e5q"/>
+                        <barButtonItem systemItem="undo" id="ThO-yw-oh0">
+                            <connections>
+                                <action selector="undoButtonTapped:" destination="uA3-Rk-WUI" id="Qr1-R3-vwU"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="yyY-gm-J17"/>
                         <barButtonItem systemItem="compose" id="96r-FT-dSA">
                             <connections>
@@ -246,6 +253,7 @@
                     <connections>
                         <outlet property="shareButton" destination="V27-MA-yEb" id="kYS-24-Ory"/>
                         <outlet property="textView" destination="LSK-Y2-Gf6" id="1ah-39-kba"/>
+                        <outlet property="undoButton" destination="ThO-yw-oh0" id="Hdi-b3-iQA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IhB-9q-7Nn" userLabel="First Responder" sceneMemberID="firstResponder"/>

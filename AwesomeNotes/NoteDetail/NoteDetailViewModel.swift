@@ -27,13 +27,16 @@ protocol NoteDetailViewModel: NSObjectProtocol {
     var noteViewModel: NoteViewModel { get set }
     var transactionType: TransactionType { get set }
     func updateNoteDocument(text: String, completion: @escaping (Error?)->Void)
-    func addOrUpdateNote(text: String, completion: @escaping (Error?)->Void) 
+    func addOrUpdateNote(text: String, completion: @escaping (Error?)->Void)
+    func undoDelete() -> String?
+    func saveText(text: String?)
 }
 
 class NoteDetailViewModelImpl: NSObject, NoteDetailViewModel {
     var note: Note
     var noteViewModel: NoteViewModel
     var transactionType: TransactionType
+    var deletedTextStack = [String]()
     
     init(note: Note, noteViewModel: NoteViewModel, transactionType: TransactionType) {
         self.note = note
@@ -56,5 +59,14 @@ class NoteDetailViewModelImpl: NSObject, NoteDetailViewModel {
         } else {
             updateNoteDocument(text: text, completion: completion)
         }
+    }
+    
+    func undoDelete() -> String? {
+        return deletedTextStack.popLast()
+    }
+    
+    func saveText(text: String?) {
+        guard let text = text, !text.isEmpty else { return }
+        deletedTextStack.append(text)
     }
 }

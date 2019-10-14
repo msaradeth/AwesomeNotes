@@ -34,6 +34,19 @@ extension UIViewController {
         alertController.addAction(saveAction)
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    func share(itemsToShare: [Any]) {
+        let activityViewController = UIActivityViewController(activityItems: itemsToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    func imagePicker() {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        self.present(picker, animated: true)
+    }
 }
 
 extension UIStoryboard {
@@ -63,5 +76,12 @@ extension Date {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let timeStamp: String = dateFormatter.string(from: Date())
         return timeStamp
+    }
+}
+
+extension UIView {
+    func makeCircle() {
+        self.layer.cornerRadius = self.bounds.size.width / 2.0
+        self.clipsToBounds = true
     }
 }

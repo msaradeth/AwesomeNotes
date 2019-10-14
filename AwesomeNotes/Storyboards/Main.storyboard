@@ -57,20 +57,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GGG-nb-E1X">
-                                <rect key="frame" x="85" y="60" width="150" height="150"/>
-                                <color key="backgroundColor" red="0.8853019754" green="0.8853019754" blue="0.8853019754" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="UZw-WC-IKL"/>
-                                    <constraint firstAttribute="height" constant="150" id="gYj-hh-8TJ"/>
-                                </constraints>
-                                <state key="normal" title="Avatar"/>
-                                <connections>
-                                    <action selector="addAvatarPressed:" destination="Eb2-tj-grV" eventType="touchUpInside" id="fgg-Vo-mkf"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NVR-QT-hla">
-                                <rect key="frame" x="20" y="300" width="280" height="50"/>
+                                <rect key="frame" x="20" y="255" width="280" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="i4c-uC-dYV"/>
                                 </constraints>
@@ -79,7 +67,7 @@
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KDX-rO-mlE">
-                                <rect key="frame" x="20" y="350" width="280" height="50"/>
+                                <rect key="frame" x="20" y="305" width="280" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="kR6-CY-5eB"/>
                                 </constraints>
@@ -88,7 +76,7 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zot-bW-Yf7">
-                                <rect key="frame" x="20" y="420" width="280" height="50"/>
+                                <rect key="frame" x="20" y="375" width="280" height="50"/>
                                 <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="kte-ff-vyu"/>
@@ -100,9 +88,9 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TRR-SD-ieE">
-                                <rect key="frame" x="20" y="250" width="280" height="31"/>
+                                <rect key="frame" x="20" y="220" width="280" height="26"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Ijb-UP-tNv"/>
+                                    <constraint firstAttribute="height" constant="25" id="Ijb-UP-tNv"/>
                                 </constraints>
                                 <segments>
                                     <segment title="Login"/>
@@ -112,28 +100,35 @@
                                     <action selector="segmentedControlTapped:" destination="Eb2-tj-grV" eventType="valueChanged" id="H3R-Hg-aZD"/>
                                 </connections>
                             </segmentedControl>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="UXH-C8-Go2">
+                                <rect key="frame" x="85" y="40" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="4qB-ds-Wbw"/>
+                                    <constraint firstAttribute="width" constant="150" id="tvX-JS-V1T"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="KDX-rO-mlE" firstAttribute="centerX" secondItem="33l-Le-KYU" secondAttribute="centerX" id="1GB-SG-Ryu"/>
-                            <constraint firstItem="NVR-QT-hla" firstAttribute="top" secondItem="TRR-SD-ieE" secondAttribute="bottom" constant="20" id="6KC-QA-2ba"/>
+                            <constraint firstItem="TRR-SD-ieE" firstAttribute="top" secondItem="UXH-C8-Go2" secondAttribute="bottom" constant="30" id="275-x9-4mz"/>
+                            <constraint firstItem="UXH-C8-Go2" firstAttribute="centerX" secondItem="33l-Le-KYU" secondAttribute="centerX" id="2r8-FA-Ey2"/>
+                            <constraint firstItem="NVR-QT-hla" firstAttribute="top" secondItem="TRR-SD-ieE" secondAttribute="bottom" constant="10" id="6KC-QA-2ba"/>
                             <constraint firstItem="Zot-bW-Yf7" firstAttribute="width" secondItem="KDX-rO-mlE" secondAttribute="width" id="AxC-SU-nNv"/>
                             <constraint firstItem="Zot-bW-Yf7" firstAttribute="top" secondItem="KDX-rO-mlE" secondAttribute="bottom" constant="20" id="HKW-br-HPK"/>
                             <constraint firstItem="NVR-QT-hla" firstAttribute="leading" secondItem="Lqf-3a-22m" secondAttribute="leading" constant="20" id="I98-YC-tzW"/>
                             <constraint firstItem="Zot-bW-Yf7" firstAttribute="centerX" secondItem="33l-Le-KYU" secondAttribute="centerX" id="K45-Uc-ypP"/>
-                            <constraint firstItem="GGG-nb-E1X" firstAttribute="centerX" secondItem="33l-Le-KYU" secondAttribute="centerX" id="LNm-Wg-Hcs"/>
                             <constraint firstItem="KDX-rO-mlE" firstAttribute="top" secondItem="NVR-QT-hla" secondAttribute="bottom" id="VEf-N7-MK6"/>
-                            <constraint firstItem="TRR-SD-ieE" firstAttribute="top" secondItem="GGG-nb-E1X" secondAttribute="bottom" constant="40" id="eig-uF-vss"/>
                             <constraint firstItem="Lqf-3a-22m" firstAttribute="trailing" secondItem="TRR-SD-ieE" secondAttribute="trailing" constant="20" id="m0d-Kp-rUR"/>
                             <constraint firstItem="KDX-rO-mlE" firstAttribute="width" secondItem="NVR-QT-hla" secondAttribute="width" id="pog-R8-VPA"/>
                             <constraint firstItem="Lqf-3a-22m" firstAttribute="trailing" secondItem="NVR-QT-hla" secondAttribute="trailing" constant="20" id="u3W-Yj-oqZ"/>
                             <constraint firstItem="TRR-SD-ieE" firstAttribute="leading" secondItem="Lqf-3a-22m" secondAttribute="leading" constant="20" id="vas-5i-op0"/>
-                            <constraint firstItem="GGG-nb-E1X" firstAttribute="top" secondItem="Lqf-3a-22m" secondAttribute="top" constant="40" id="zNe-Fb-XXU"/>
+                            <constraint firstItem="UXH-C8-Go2" firstAttribute="top" secondItem="Lqf-3a-22m" secondAttribute="top" constant="20" id="vnb-QY-PJy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Lqf-3a-22m"/>
                     </view>
                     <connections>
-                        <outlet property="avatarButton" destination="GGG-nb-E1X" id="NTN-Ji-6Ua"/>
+                        <outlet property="avatarImageView" destination="UXH-C8-Go2" id="Trm-R3-3b2"/>
                         <outlet property="emailTextField" destination="NVR-QT-hla" id="D54-c7-SeY"/>
                         <outlet property="loginRegisterButton" destination="Zot-bW-Yf7" id="saq-Cf-642"/>
                         <outlet property="passwordTextField" destination="KDX-rO-mlE" id="DFV-t0-wmo"/>
@@ -152,4 +147,7 @@
             <point key="canvasLocation" x="1945" y="340"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="defaultAvatar" width="100" height="100"/>
+    </resources>
 </document>

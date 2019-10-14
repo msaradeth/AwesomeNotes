@@ -8,7 +8,7 @@
 import UIKit
 
 class LoginOrRegisterViewController: UIViewController {
-    @IBOutlet weak var avatarButton: UIButton!
+    @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var loginRegisterButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -21,6 +21,8 @@ class LoginOrRegisterViewController: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         loginRegisterButton.isEnabled = UITextField.isValidEmail(emailTextField.text) && UITextField.isValidPassword(passwordTextField.text)
+        avatarImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(avatarImageTapped)))
+        avatarImageView.makeCircle()
     }
     
     //MARK: Actions
@@ -56,6 +58,19 @@ extension LoginOrRegisterViewController: UITextFieldDelegate {
             loginRegisterButton.isEnabled = UITextField.isValidPassword(newString) && UITextField.isValidEmail(emailTextField.text)
         }
         return true
+    }
+}
+
+//MARK: Pick Avatar image
+extension LoginOrRegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    @objc func avatarImageTapped() {
+        self.imagePicker()
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.editedImage] as? UIImage else { return }
+        dismiss(animated: true)
+        avatarImageView.image = image
     }
 }
 

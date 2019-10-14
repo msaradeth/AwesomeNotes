@@ -11,6 +11,7 @@ class NoteDetailViewController: UIViewController {
     @IBOutlet var shareButton: UIBarButtonItem!
     @IBOutlet weak var textView: UITextView!
     
+    @IBOutlet weak var undoButton: UIBarButtonItem!
     var viewModel: NoteDetailViewModel!
     
     //MARK: Life Cycle
@@ -36,6 +37,9 @@ class NoteDetailViewController: UIViewController {
     
     //MARK: Actions
     @IBAction func shareButtonTapped(_ sender: Any) {
+        if let text = textView.text {
+            self.share(itemsToShare: [text])
+        }
     }
     
     @IBAction func composeButtonTapped(_ sender: Any) {
@@ -50,10 +54,16 @@ class NoteDetailViewController: UIViewController {
         textView.text = ""
     }
     
+    @IBAction func undoButtonTapped(_ sender: Any) {
+        if let text = viewModel.undoDelete() {
+            textView.text = text
+        }
+    }
+    
     @IBAction func trashButtonTapped(_ sender: Any) {
+        viewModel.saveText(text: textView.text)
         textView.text = ""
         if viewModel.transactionType == .update {
-            viewModel.noteViewModel.updateNumberOfNotes(folderID: viewModel.note.folderID)
             viewModel.noteViewModel.deleteNoteDocument(note: viewModel.note) { [weak self] (error) in
                 if let error = error {
                     self?.showAlert(title: "Delete note error", message: error.localizedDescription)

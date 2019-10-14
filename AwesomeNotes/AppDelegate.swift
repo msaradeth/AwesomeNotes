@@ -17,8 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         IQKeyboardManager.shared.enable = true
+        
+        //configure Firebase
         FirebaseApp.configure()
+        let settings = FirestoreSettings()
+        settings.isPersistenceEnabled = true
+        // Enable offline data persistence
+        let db = Firestore.firestore()
+        db.settings = settings
 
+        //configure App entry point
         user = User()
         var navController: UINavigationController!
         if user.isLogin {
