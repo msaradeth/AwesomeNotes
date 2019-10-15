@@ -23,10 +23,13 @@ enum TransactionType {
 }
 
 protocol NoteDetailViewModel: NSObjectProtocol {
+    typealias TrashStackObserver = (([String])->())
     var note: Note { get set }
     var noteViewModel: NoteViewModel { get set }
     var transactionType: TransactionType { get set }
     var databaseService: DatabaseService { get }
+    var trashStack: [String] { get set }
+    var trashStackObserver: TrashStackObserver? { set get }
     func updateNoteDocument(text: String, completion: @escaping (Error?)->Void)
     func addOrUpdateNote(text: String, completion: @escaping (Error?)->Void)
     func undoDelete() -> String?
@@ -37,7 +40,8 @@ class NoteDetailViewModelImpl: NSObject, NoteDetailViewModel {
     var note: Note
     var noteViewModel: NoteViewModel
     var transactionType: TransactionType
-    var deletedTextStack = [String]()
+    var trashStack = [String]()
+    var trashStackObserver: TrashStackObserver?
     var databaseService: DatabaseService
     
     init(note: Note, noteViewModel: NoteViewModel, transactionType: TransactionType, databaseService: DatabaseService) {
@@ -61,11 +65,14 @@ class NoteDetailViewModelImpl: NSObject, NoteDetailViewModel {
     }
     
     func undoDelete() -> String? {
-        return deletedTextStack.popLast()
+        let text = trashStack.popLast()
+        trashStackObserver?(trashStack)
+        return text
     }
     
     func saveText(text: String?) {
         guard let text = text, !text.isEmpty else { return }
-        deletedTextStack.append(text)
+        trashStack.append(text)
+        trashStackObserver?(trashStack)
     }
 }

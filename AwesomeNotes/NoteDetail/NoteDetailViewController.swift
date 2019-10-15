@@ -10,7 +10,7 @@ import UIKit
 class NoteDetailViewController: UIViewController {
     @IBOutlet var shareButton: UIBarButtonItem!
     @IBOutlet weak var textView: UITextView!
-    
+    @IBOutlet weak var trashButton: UIBarButtonItem!
     @IBOutlet weak var undoButton: UIBarButtonItem!
     var viewModel: NoteDetailViewModel!
     
@@ -19,7 +19,14 @@ class NoteDetailViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = shareButton
         navigationController?.navigationBar.prefersLargeTitles = false
+        textView.delegate = self
         textView.text = viewModel.note.text
+        updateButtons()
+        viewModel.trashStackObserver = { [weak self] (traskStack) in
+            DispatchQueue.main.async {
+                self?.updateButtons()
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -34,6 +41,11 @@ class NoteDetailViewController: UIViewController {
         }
     }
     
+    private func updateButtons() {
+        trashButton.isEnabled = textView.text.count > 0 ? true : false
+        shareButton.isEnabled = textView.text.count > 0 ? true : false
+        undoButton.isEnabled = viewModel.trashStack.count > 0 ? true : false
+    }
     
     //MARK: Actions
     @IBAction func shareButtonTapped(_ sender: Any) {
@@ -52,6 +64,7 @@ class NoteDetailViewController: UIViewController {
         }
         viewModel.transactionType = .add
         textView.text = ""
+        updateButtons()
     }
     
     @IBAction func undoButtonTapped(_ sender: Any) {
@@ -71,5 +84,11 @@ class NoteDetailViewController: UIViewController {
             }
         }
         viewModel.transactionType = .add
+    }
+}
+
+extension NoteDetailViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        updateButtons()
     }
 }

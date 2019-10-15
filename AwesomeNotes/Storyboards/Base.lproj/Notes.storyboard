@@ -237,7 +237,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="RA8-fj-e5q"/>
-                        <barButtonItem systemItem="undo" id="ThO-yw-oh0">
+                        <barButtonItem enabled="NO" systemItem="undo" id="ThO-yw-oh0">
                             <connections>
                                 <action selector="undoButtonTapped:" destination="uA3-Rk-WUI" id="Qr1-R3-vwU"/>
                             </connections>
@@ -253,6 +253,7 @@
                     <connections>
                         <outlet property="shareButton" destination="V27-MA-yEb" id="kYS-24-Ory"/>
                         <outlet property="textView" destination="LSK-Y2-Gf6" id="1ah-39-kba"/>
+                        <outlet property="trashButton" destination="ky9-7C-p3F" id="tMN-HD-vXW"/>
                         <outlet property="undoButton" destination="ThO-yw-oh0" id="Hdi-b3-iQA"/>
                     </connections>
                 </viewController>
