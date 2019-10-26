@@ -13,12 +13,15 @@ import IQKeyboardManagerSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
+    let databaseService = DatabaseService()
+    var user: User!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         IQKeyboardManager.shared.enable = true
+        FirebaseApp.configure()
         configureFirebase()
 
-        let navController = NavController(rootViewController: FlashScreen.create())
+        let navController = UINavigationController(rootViewController: FlashScreen.create())
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = navController
         self.window?.makeKeyAndVisible()
@@ -27,8 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func configureFirebase() {
-        FirebaseApp.configure()
-        
         let settings = FirestoreSettings()
         settings.isPersistenceEnabled = true
         

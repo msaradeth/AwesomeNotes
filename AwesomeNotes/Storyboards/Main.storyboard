@@ -68,7 +68,6 @@
                     <connections>
                         <outlet property="loginSignup" destination="WN3-6h-Vwv" id="OmB-Fv-LLY"/>
                         <segue destination="Eb2-tj-grV" kind="show" identifier="showEmailLogin" id="NXr-2I-dSJ"/>
-                        <segue destination="FT8-C2-HCk" kind="show" identifier="showFolders" id="Ln3-Hu-4hD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zJp-wR-ly8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -162,7 +161,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uCJ-Ph-YlI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2941.875" y="-205.98591549295776"/>
+            <point key="canvasLocation" x="2970" y="163"/>
         </scene>
         <!--Notes-->
         <scene sceneID="9kB-gc-Fj9">

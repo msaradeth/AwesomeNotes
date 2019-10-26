@@ -51,8 +51,9 @@ class FolderListViewController: UIViewController {
     
     //MARK: Actions
     @IBAction func editButtonTapped(_ sender: Any) {
-        navigationItem.rightBarButtonItem = cancelButton
-        tableView.setEditing(true, animated: true)
+        assertionFailure("testing Google Crashlytics")
+//        navigationItem.rightBarButtonItem = cancelButton
+//        tableView.setEditing(true, animated: true)
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
